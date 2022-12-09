@@ -44,7 +44,15 @@ public class Food extends Dish {
         this.calories = calories;
     }
 
-
+    @Override
+    public String toString() {
+        return "Name: " + getName() + System.lineSeparator() +
+                "Price: " + getPrice() + System.lineSeparator() +
+                "Description: " + getDescription() + System.lineSeparator() +
+                "Food type: " + type + System.lineSeparator() +
+                "Weight: " + weight + System.lineSeparator() +
+                "Calories: " + calories;
+    }
 }
 
 

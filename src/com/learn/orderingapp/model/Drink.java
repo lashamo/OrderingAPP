@@ -32,4 +32,13 @@ public class Drink extends Dish {
     public void setPercentage(int percentage) {
         this.percentage = percentage;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + getName() + System.lineSeparator() +
+                "Price: " + getPrice() + System.lineSeparator() +
+                "Description: " + getDescription() + System.lineSeparator() +
+                "Drink type: " + type + System.lineSeparator() +
+                "Percentage: " + percentage;
+    }
 }
