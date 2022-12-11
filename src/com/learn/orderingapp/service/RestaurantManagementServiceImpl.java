@@ -60,6 +60,7 @@ public class RestaurantManagementServiceImpl implements RestaurantManagementServ
         List<Order> orders = new ArrayList<>();
 
         for (File orderFile : ordersDirectory.listFiles()) {
+            // read order file information
             try (BufferedReader bufferedReader = new BufferedReader(new FileReader(orderFile))) {
                 String id = bufferedReader.readLine();
                 LocalDateTime time = LocalDateTime.parse(bufferedReader.readLine());

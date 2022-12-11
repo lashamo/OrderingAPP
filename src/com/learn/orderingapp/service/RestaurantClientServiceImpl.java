@@ -12,7 +12,9 @@ public class RestaurantClientServiceImpl implements RestaurantClientService {
 
     @Override
     public List<String> showAllRestaurant(String rootDirectory) throws OrderingAppException {
+        // create list of restaurant
         List<String> restaurants = new ArrayList<>();
+        //create rootDirectory
         File root = new File(rootDirectory);
         for (File restDirectory : root.listFiles()) {
             if (restDirectory.isDirectory()) {
@@ -25,6 +27,7 @@ public class RestaurantClientServiceImpl implements RestaurantClientService {
     @Override
     public List<Dish> listOfDish(String restaurantName, String rootDirectory) throws OrderingAppException {
         File file = new File(rootDirectory + "\\" + restaurantName + "\\info.txt");
+        // read of computer file info.txt
         try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(file))) {
             Restaurant restaurant = (Restaurant) inputStream.readObject();
             return restaurant.getDishes();
@@ -35,10 +38,13 @@ public class RestaurantClientServiceImpl implements RestaurantClientService {
 
     @Override
     public double makeOrder(List<OrderItem> orderItems, String restaurantName, String rootDirectory) throws OrderingAppException {
+        // create random value of unicodeID
         String uniqueID = UUID.randomUUID().toString();
+        // create localDateTIme for now
         LocalDateTime now = LocalDateTime.now();
 
         double summedPrice = 0;
+        // create list of dishes
         List<Dish> dishes = listOfDish(restaurantName, rootDirectory);
         for (OrderItem item : orderItems){
             Dish dish = null;
